@@ -1,13 +1,23 @@
 import sys
+import pathlib
 from repo_data_reader import yml_reader
 
-version = "0.0.1"
+_version = "0.0.1"
+_help_arguments = ["--help", "-h"]
+_repo_file_arguments = ["--repo_file", "-rf"]
+_script_name_without_extension = __file__[:-3]
 
 
-def print_help():
-    print("Usage: {} [--help][-h][--repo_file][-rf]".format(__file__[:-3]))
+def _print_help():
+    print("Usage: {} [--help][-h][--repo_file][-rf]".format(_script_name_without_extension))
     print("--help, -h: prints this message")
     print("--repo_file, -rf: .yml file with list of repositories to clone")
+
+
+def _verify_yml_extension(filename):
+    if pathlib.Path(filename).suffix == ".yml":
+        return True
+    return False
 
 
 def read_repos(file):
@@ -15,34 +25,30 @@ def read_repos(file):
 
 
 def main():
-    print("Welcome to the {} version {}".format(__file__[:-3], version))
+    print("Welcome to the {} version {}".format(_script_name_without_extension, _version))
     if len(sys.argv) == 0:
-        print_help()
+        _print_help()
         return
     for arg in sys.argv[1:]:
-        if arg == "--help" or arg == "-h":
-            print_help()
+        if arg in _help_arguments:
+            _print_help()
             return
-        if arg == "--repo_file" or arg == "-rf":
+        if arg in _repo_file_arguments:
             file_index = sys.argv.index(arg)
             if file_index >= len(sys.argv):
                 print("Error: missing repo .yml file argument")
-                print_help()
+                _print_help()
                 return
-            a = sys.argv[file_index+1]
-            b = sys.argv[file_index+1][-4:]
-            if sys.argv[file_index+1] != "--help" \
-                    and sys.argv[file_index+1] != "-h" \
-                    and sys.argv[file_index+1] != "--repo_file" \
-                    and sys.argv[file_index+1] != "-rf" \
-                    and sys.argv[file_index+1][-4:] != ".yml":
-                print("Error: bad argument: {}".format(sys.argv[file_index+1]))
-                print_help()
+            if sys.argv[file_index+1] not in _help_arguments \
+                    and sys.argv[file_index+1] not in _repo_file_arguments \
+                    and _verify_yml_extension(sys.argv[file_index+1]) == False:
+                print("Error: bad argument for --repo_file: {}".format(sys.argv[file_index+1]))
+                _print_help()
                 return
             read_repos(sys.argv[file_index+1])
             return
         else:
-            print_help()
+            _print_help()
             return
 
 
