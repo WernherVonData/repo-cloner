@@ -130,3 +130,6 @@ dmypy.json
 
 # PyCharm related files
 .idea/*
+
+# Local files that I would not like to have on the repository online
+local_verification.sh
