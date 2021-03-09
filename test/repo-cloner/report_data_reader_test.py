@@ -1,5 +1,5 @@
 import os
-from repo_data_reader import yml_reader
+from repo_cloner import yml_reader
 
 path_to_test = os.path.dirname(os.path.abspath(__file__))
 _expected_listed_repos_structure = ["repo1", "repo2", "repo3"]

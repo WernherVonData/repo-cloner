@@ -1,6 +1,7 @@
+import subprocess
 import sys
 import pathlib
-from repo_data_reader import yml_reader
+import yml_reader
 
 _version = "0.0.1"
 _help_arguments = ["--help", "-h"]
@@ -20,8 +21,11 @@ def _verify_yml_extension(filename):
     return False
 
 
-def read_repos(file):
-    yml_reader.read_repos_list(file)
+def clone_repositories(repos):
+    for repo in repos:
+        print("Cloning: {}".format(repo))
+        clone_repo = subprocess.run(["git", "clone", repo])
+        print("The exit code was: {}".format(str(clone_repo.returncode)))
 
 
 def main():
@@ -45,7 +49,7 @@ def main():
                 print("Error: bad argument for --repo_file: {}".format(sys.argv[file_index+1]))
                 _print_help()
                 return
-            read_repos(sys.argv[file_index+1])
+            clone_repositories(yml_reader.read_repos_list(sys.argv[file_index+1]))
             return
         else:
             _print_help()
