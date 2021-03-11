@@ -1,7 +1,7 @@
 import subprocess
 import sys
 import pathlib
-import yml_reader
+from .yml_reader import read_repos_list
 
 _version = "0.0.1"
 _help_arguments = ["--help", "-h"]
@@ -28,32 +28,36 @@ def clone_repositories(repos):
         print("The exit code was: {}".format(str(clone_repo.returncode)))
 
 
-def main():
-    print("Welcome to the {} version {}".format(_script_name_without_extension, _version))
-    if len(sys.argv) == 0:
+def execute_arguments(args):
+    if len(args) == 0:
         _print_help()
         return
-    for arg in sys.argv[1:]:
+    for arg in args[1:]:
         if arg in _help_arguments:
             _print_help()
             return
         if arg in _repo_file_arguments:
-            file_index = sys.argv.index(arg)
-            if file_index >= len(sys.argv):
+            file_index = args.index(arg)
+            if file_index >= len(args):
                 print("Error: missing repo .yml file argument")
                 _print_help()
                 return
-            if sys.argv[file_index+1] not in _help_arguments \
-                    and sys.argv[file_index+1] not in _repo_file_arguments \
-                    and _verify_yml_extension(sys.argv[file_index+1]) == False:
-                print("Error: bad argument for --repo_file: {}".format(sys.argv[file_index+1]))
+            if args[file_index+1] not in _help_arguments \
+                    and args[file_index+1] not in _repo_file_arguments \
+                    and _verify_yml_extension(args[file_index+1]) == False:
+                print("Error: bad argument for --repo_file: {}".format(args[file_index+1]))
                 _print_help()
                 return
-            clone_repositories(yml_reader.read_repos_list(sys.argv[file_index+1]))
+            clone_repositories(read_repos_list(args[file_index+1]))
             return
         else:
             _print_help()
             return
+
+
+def main():
+    print("Welcome to the {} version {}".format(_script_name_without_extension, _version))
+    execute_arguments(sys.argv)
 
 
 if __name__ == "__main__":
