@@ -1,7 +1,7 @@
 import subprocess
 import sys
 import pathlib
-from .yml_reader import read_repos_list
+from repo_cloner.yml_reader import read_repos_list
 
 _version = "0.0.1"
 _help_arguments = ["--help", "-h"]
@@ -29,26 +29,29 @@ def clone_repositories(repos):
 
 
 def execute_arguments(args):
-    if len(args) == 0:
+    if len(args) <= 1:
         _print_help()
         return
-    for arg in args[1:]:
-        if arg in _help_arguments:
+
+    for h in _help_arguments:
+        if h in args:
             _print_help()
             return
+
+    for arg in args[1:]:
         if arg in _repo_file_arguments:
-            file_index = args.index(arg)
+            file_index = args.index(arg)+1
             if file_index >= len(args):
                 print("Error: missing repo .yml file argument")
                 _print_help()
                 return
-            if args[file_index+1] not in _help_arguments \
-                    and args[file_index+1] not in _repo_file_arguments \
-                    and _verify_yml_extension(args[file_index+1]) == False:
-                print("Error: bad argument for --repo_file: {}".format(args[file_index+1]))
+            if args[file_index] not in _help_arguments \
+                    and args[file_index] not in _repo_file_arguments \
+                    and _verify_yml_extension(args[file_index]) == False:
+                print("Error: bad argument for --repo_file: {}".format(args[file_index]))
                 _print_help()
                 return
-            clone_repositories(read_repos_list(args[file_index+1]))
+            clone_repositories(read_repos_list(args[file_index]))
             return
         else:
             _print_help()
@@ -56,7 +59,7 @@ def execute_arguments(args):
 
 
 def main():
-    print("Welcome to the {} version {}".format(_script_name_without_extension, _version))
+    print("Welcome to the repo_cloner version {}".format(_version))
     execute_arguments(sys.argv)
 
 
