@@ -8,7 +8,7 @@
 4. [Licensing, Authors and Acknowledgements](#licensing)
 
 ## Installation <a name="installation"></a>
-
+- You need to have installed git on your operating system.
 - To install all required packages and run tests you need run from root directory:
     - Install dependencies from requirements.txt:
         - `pip install -r requirements.txt`
@@ -16,7 +16,7 @@
         - `pip install .`
     - Run tests:
         - `pytest`
-
+    
 ## Project Motivation <a name="motivation"></a>
 
 This project is a simple Python excercise that allow you to clone multiple repositories at one time.
@@ -36,7 +36,9 @@ Cloning repositories:
 - `repo-cloner --repo-file <*.yml>` - will clone repositories to directory of running this command. Currently the .yml
 configuration file should contain only list of git repo URL's to clone.
 
-
+Project was tested only on Linux, I cannot guarantee that it'll work correctly on other
+system.
+  
 ## Licensing, Authors, and Acknowledgements <a name="licensing"></a>
 
 This package is released under MIT license. Please report any feedback to me if this package was useful to You.
