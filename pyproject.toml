@@ -1,7 +1,10 @@
 [build-system]
 # Minimum requirements for the build system to execute.
 requires = [
+    "setuptools>=42",
+    "wheel",
     "pytest",
     "pytest-mock",
     "pyyaml"
 ]
+build-backend = 'setuptools.build_meta'
