@@ -25,9 +25,8 @@ setuptools.setup(name='repo-cloner',
                  classifiers=[
                      'Environment :: Console',
                      'Intended Audience :: Developers',
-                     'Operating System :: Linux',
+                     'Operating System :: POSIX',
                      'Programming Language :: Python',
-                     'Topic :: Communications :: Github',
                      'Topic :: Communications :: Email',
                      'Topic :: Software Development :: Bug Tracking'
                  ],
