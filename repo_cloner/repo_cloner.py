@@ -58,10 +58,10 @@ def execute_arguments(args):
             return
 
 
-def main():
+def run():
     print("Welcome to the repo_cloner version {}".format(_version))
     execute_arguments(sys.argv)
 
 
 if __name__ == "__main__":
-    main()
+    run()

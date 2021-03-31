@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(name='repo-cloner',
-                 version='0.0.1',
+                 version='0.0.2',
                  description='Python utility for cloning repositories',
                  long_description=long_description,
                  long_description_content_type="text/markdown",
@@ -19,7 +19,7 @@ setuptools.setup(name='repo-cloner',
                  # pip to create the appropriate form of executable for the target platform.
                  entry_points={
                      'console_scripts': [
-                         'repo_cloner=repo_cloner.repo_cloner:main'
+                         'repo-cloner=repo_cloner.repo_cloner:run'
                      ]
                  },
                  classifiers=[
@@ -30,7 +30,6 @@ setuptools.setup(name='repo-cloner',
                      'Topic :: Communications :: Email',
                      'Topic :: Software Development :: Bug Tracking'
                  ],
-                 package_dir={"": "repo_cloner"},
-                 packages=setuptools.find_packages(where="repo_cloner"),
+                 packages=["repo_cloner"],
                  python_requires=">=3.6"
                  )
