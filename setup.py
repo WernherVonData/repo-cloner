@@ -19,7 +19,7 @@ setuptools.setup(name='repo-cloner',
                  # pip to create the appropriate form of executable for the target platform.
                  entry_points={
                      'console_scripts': [
-                         'repo_cloner=repo_cloner.repo_cloner:main'
+                         'repo_cloner=repo_cloner.cloner:main'
                      ]
                  },
                  classifiers=[
@@ -30,7 +30,7 @@ setuptools.setup(name='repo-cloner',
                      'Topic :: Communications :: Email',
                      'Topic :: Software Development :: Bug Tracking'
                  ],
-                 package_dir={"": "repo_cloner"},
-                 packages=setuptools.find_packages(where="repo_cloner"),
+                 package_dir={"": "src"},
+                 packages=setuptools.find_packages(where="src"),
                  python_requires=">=3.6"
                  )
