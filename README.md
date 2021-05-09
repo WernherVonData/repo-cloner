@@ -36,8 +36,15 @@ Cloning repositories:
 - `repo-cloner --repo-file <*.yml>` - will clone repositories to directory of running this command. Currently the .yml
 configuration file should contain only list of git repo URL's to clone.
 
-Project was tested only on Linux, I cannot guarantee that it'll work correctly on other
-system.
+The example repo file structure look as follows:
+
+```
+- https://link1.git
+- https://link2.git
+- git@link3.git
+``` 
+
+  
   
 ## Licensing, Authors, and Acknowledgements <a name="licensing"></a>
 

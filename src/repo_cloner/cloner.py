@@ -3,7 +3,6 @@ import sys
 import pathlib
 from repo_cloner.yml_reader import read_repos_list
 
-_version = "0.0.1"
 _help_arguments = ["--help", "-h"]
 _repo_file_arguments = ["--repo_file", "-rf"]
 _script_name_without_extension = __file__[:-3]
@@ -59,7 +58,7 @@ def execute_arguments(args):
 
 
 def main():
-    print("Welcome to the repo_cloner version {}".format(_version))
+    print("Welcome to the repo_cloner")
     execute_arguments(sys.argv)
 
 
