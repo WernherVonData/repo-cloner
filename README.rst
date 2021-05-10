@@ -28,4 +28,4 @@ Now try to run repo-cloner:
 License
 -------
 
-`MIT LICENSE <./LICENSE.md>`__
+`MIT LICENSE <./LICENSE>`
