@@ -1,13 +1,14 @@
 import setuptools
 
+
 with open("README.rst", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+
 setuptools.setup(name='repo-cloner',
-                 version='0.0.5',
+                 version='0.0.7',
                  description='Python utility for cloning repositories',
                  long_description=long_description,
-                 long_description_content_type="text/markdown",
                  author='Daniel Peczek',
                  author_email='danpeczek@gmail.com',
                  url='https://github.com/danpeczek/repo-cloner',

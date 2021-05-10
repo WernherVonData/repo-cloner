@@ -1,5 +1,5 @@
 repo-cloner
-=====
+===========
 
 Open source repository cloner.
 
