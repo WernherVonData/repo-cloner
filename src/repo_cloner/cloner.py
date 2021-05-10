@@ -9,7 +9,7 @@ _script_name_without_extension = __file__[:-3]
 
 
 def _print_help():
-    print("Usage: {} [--help][-h][--repo_file][-rf]".format(_script_name_without_extension))
+    print("Usage: repo-cloner [--help][-h][--repo_file][-rf]")
     print("--help, -h: prints this message")
     print("--repo_file, -rf: .yml file with list of repositories to clone")
 
@@ -58,7 +58,6 @@ def execute_arguments(args):
 
 
 def main():
-    print("Welcome to the repo_cloner")
     execute_arguments(sys.argv)
 
 
