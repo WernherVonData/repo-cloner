@@ -9,14 +9,16 @@ repo-cloner is a python utility to clone multiple repositories at once without b
 to do it manual. Tool reads the information about your repositories and clone them into current
 directory.
 
++-------------------------+
+| **develop**             |
++=========================+
+| |Build Status Develop|  |
++-------------------------+
+
 Setup
 =====
 
 Currently the tool is available only on test pypi repository.
-
-.. code-block::
-
-   $ pip install conan
 
 .. code-block:: bash
 
@@ -35,3 +37,6 @@ License
 -------
 
 `MIT LICENSE <./LICENSE>`__
+
+.. |Build Status Develop| image:: https://ci.conan.io/buildStatus/icon?job=ConanTestSuite/develop
+   :target: https://api.travis-ci.com/danpeczek/repo-cloner.svg?branch=main
