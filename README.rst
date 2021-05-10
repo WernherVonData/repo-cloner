@@ -14,12 +14,12 @@ Setup
 
 Currently the tool is available only on test pypi repository.
 
-.. code-block::
+.. code-block:: bash
     $ pip install -i https://test.pypi.org/simple/ repo-cloner==0.0.4
 
 Now try to run repo-cloner:
 
-.. code-block::
+.. code-block:: bash
     $ repo-cloner -h
     Usage: repo-cloner [--help][-h][--repo_file][-rf]
     --help, -h: prints this message
