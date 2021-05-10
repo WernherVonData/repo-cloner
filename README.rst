@@ -33,6 +33,14 @@ Now try to run repo-cloner:
     --help, -h: prints this message
     --repo_file, -rf: .yml file with list of repositories to clone
 
+Currently, only list of repositories is supported, in format:
+
+.. code-block:: bash
+
+    - git@repo1.git
+    - https://repo2.git
+    - https://repo3.git
+
 License
 -------
 
