@@ -10,7 +10,7 @@ to do it manual. Tool reads the information about your repositories and clone th
 directory.
 
 +-------------------------+
-| **develop**             |
+|       **main**          |
 +=========================+
 | |Build Status Develop|  |
 +-------------------------+
