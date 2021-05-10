@@ -4,7 +4,7 @@ with open("README.rst", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(name='repo-cloner',
-                 version='0.0.4',
+                 version='0.0.5',
                  description='Python utility for cloning repositories',
                  long_description=long_description,
                  long_description_content_type="text/markdown",
