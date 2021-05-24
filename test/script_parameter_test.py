@@ -87,12 +87,36 @@ def test_h_argument(mocker):
     assert _print_help_mock.call_count == 1
 
 
+def test_v_argument(mocker):
+    _print_get_version_mock = mocker.patch('repo_cloner.cloner._get_version')
+    _read_repo_list = mocker.patch('repo_cloner.cloner.read_repos_list')
+    _clone_repositories_mock = mocker.patch('repo_cloner.cloner.clone_repositories')
+
+    execute_arguments(["script_name", "-v"])
+
+    assert _read_repo_list.call_count == 0
+    assert _clone_repositories_mock.call_count == 0
+    assert _print_get_version_mock.call_count == 1
+
+
+def test_version_argument(mocker):
+    _print_get_version_mock = mocker.patch('repo_cloner.cloner._get_version')
+    _read_repo_list = mocker.patch('repo_cloner.cloner.read_repos_list')
+    _clone_repositories_mock = mocker.patch('repo_cloner.cloner.clone_repositories')
+
+    execute_arguments(["script_name", "--version"])
+
+    assert _read_repo_list.call_count == 0
+    assert _clone_repositories_mock.call_count == 0
+    assert _print_get_version_mock.call_count == 1
+
+
 def test_all_arguments_with_help(mocker):
     _print_help_mock = mocker.patch('repo_cloner.cloner._print_help')
     _read_repo_list = mocker.patch('repo_cloner.cloner.read_repos_list')
     _clone_repositories_mock = mocker.patch('repo_cloner.cloner.clone_repositories')
 
-    execute_arguments(["script_name", "-rf", "test.yml", "--help"])
+    execute_arguments(["script_name", "-rf", "test.yml", "-v", "--help"])
 
     assert _read_repo_list.call_count == 0
     assert _clone_repositories_mock.call_count == 0
@@ -104,7 +128,7 @@ def test_all_arguments_with_h(mocker):
     _read_repo_list = mocker.patch('repo_cloner.cloner.read_repos_list')
     _clone_repositories_mock = mocker.patch('repo_cloner.cloner.clone_repositories')
 
-    execute_arguments(["script_name", "-rf", "test.yml", "-h"])
+    execute_arguments(["script_name", "-rf", "test.yml", "--version", "-h"])
 
     assert _read_repo_list.call_count == 0
     assert _clone_repositories_mock.call_count == 0
