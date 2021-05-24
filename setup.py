@@ -1,12 +1,23 @@
 import setuptools
-
+import os
+import re
 
 with open("README.rst", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 
+def load_version():
+    """ Loads a file content """
+    filename = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                            "src", "repo_cloner", "__init__.py"))
+    with open(filename, "rt") as version_file:
+        init_file = version_file.read()
+        version = re.search(r"__version__ = '([0-9a-z.-]+)'", init_file).group(1)
+        return version
+
+
 setuptools.setup(name='repo-cloner',
-                 version='0.0.7',
+                 version=load_version(),
                  description='Python utility for cloning repositories',
                  long_description=long_description,
                  author='Daniel Peczek',
