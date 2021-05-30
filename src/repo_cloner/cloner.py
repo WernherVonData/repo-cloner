@@ -23,6 +23,7 @@ def _verify_yml_extension(filename):
         return True
     return False
 
+
 def _get_version():
     filename = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),"__init__.py"))
     with open(filename, "rt") as version_file:
@@ -31,11 +32,39 @@ def _get_version():
         return version
 
 
-def clone_repositories(repos):
+def is_git_repository(repo):
+    if isinstance(repo, str):
+        if repo.find("https://") != -1 or repo.find("git@") != -1:
+            return True
+        return False
+    return False
+
+
+def clone_repository(repo_link, path="."):
+    print("Cloning: {} into: {}".format(repo_link, path))
+    clone_repo = subprocess.run(["git", "clone", repo_link, path])
+    print("The exit code was: {}".format(str(clone_repo.returncode)))
+
+
+def clone_repositories(repos, repo_paths=["."]):
     for repo in repos:
-        print("Cloning: {}".format(repo))
-        clone_repo = subprocess.run(["git", "clone", repo])
-        print("The exit code was: {}".format(str(clone_repo.returncode)))
+        if is_git_repository(repo):
+            repo_name = repo.split("/")[-1]
+            repo_name = repo_name[:-4]
+            path = os.path.join(repo_paths[-1], repo_name)
+            clone_repository(repo, path)
+            continue
+
+        if repo_paths[-1] == ".":
+            repo_paths.append(repo)
+        else:
+            repo_paths.append(os.path.join(repo_paths[-1], repo))
+        try:
+            os.mkdir(repo_paths[-1])
+        except FileExistsError:
+            print("{} already exist".format(repo_paths[-1]))
+        clone_repositories(repos[repo], repo_paths)
+        repo_paths = repo_paths[:-1]
 
 
 def execute_arguments(args):

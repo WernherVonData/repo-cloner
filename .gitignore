@@ -133,3 +133,6 @@ dmypy.json
 
 # Local files that I would not like to have on the repository online
 local_verification.sh
+reposList.yml
+manual_testing_dir/testFile.yml
+manual_testing_dir/*
