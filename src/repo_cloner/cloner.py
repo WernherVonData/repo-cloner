@@ -63,7 +63,7 @@ def clone_repositories(repos, repo_paths=["."]):
             os.mkdir(repo_paths[-1])
         except FileExistsError:
             print("{} already exist".format(repo_paths[-1]))
-        clone_repositories(repos[repo], repo_paths)
+        clone_repositories(repos[repo], repo_paths.copy())
         repo_paths = repo_paths[:-1]
 
 
