@@ -8,7 +8,8 @@ def read_repos_list(path_to_yaml):
         except yaml.YAMLError as exc:
             print("Error in the file: {}, error: {}".format(path_to_yaml, exc))
             return []
-        if isinstance(doc, list):
-            return doc
-        print("Only list of repos in the .yml files are already supported, returning empty list")
-        return []
+        return doc
+        # if isinstance(doc, list):
+        #     return doc
+        # print("Only list of repos in the .yml files are already supported, returning empty list")
+        # return []
