@@ -20,11 +20,10 @@ setuptools.setup(name='repo-cloner',
                  version=load_version(),
                  description='Python utility for cloning repositories',
                  long_description=long_description,
-                 author='Daniel Peczek',
-                 author_email='danpeczek@gmail.com',
-                 url='https://github.com/danpeczek/repo-cloner',
+                 author='WernherVonData',
+                 url='https://github.com/WernherVonData/repo-cloner',
                  project_urls={
-                     "Bug Tracker": "https://github.com/danpeczek/repo-cloner/issues",
+                     "Bug Tracker": "https://github.com/WernherVonData/repo-cloner/issues",
                  },
                  # To provide executable scripts, use entry points in preference to the
                  # "scripts" keyword. Entry points provide cross-platform support and allow
