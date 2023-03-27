@@ -3,7 +3,7 @@ repo-cloner
 
 Open source repository cloner.
 
-- Github: https://github.com/WernherVonDonut/repo-cloner
+- Github: https://github.com/danpeczek/repo-cloner
 
 repo-cloner is a python utility to clone multiple repositories at once without bothering
 to do it manual. Tool reads the information about your repositories and clone them into current
